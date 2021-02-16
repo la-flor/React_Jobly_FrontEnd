@@ -5,14 +5,15 @@ import JoblyApi from "./api/api";
 
 import NavBar from "./NavBar";
 import Routes from './Routes';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [userToken, setToken] = useLocalStorage(null);
 
   async function loginUser(data) {
     try {
-      const userToken = await JoblyApi.login(data);
-      setLoggedIn(loginStatus => true);
+      let token = await JoblyApi.login(data);
+      setToken(token);
 
       return {success: true};
     } catch (errors) {
@@ -24,7 +25,7 @@ function App() {
   async function signUp(data) {
     try {
       const userToken = await JoblyApi.signUp(data);
-      setLoggedIn(loginStatus => true);
+      setToken(userToken);
 
       return {success: true};
     } catch (errors) {
@@ -36,7 +37,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-          <NavBar loggedIn={loggedIn} />
+          <NavBar userToken={userToken} />
           <div className="container">
             <Routes loginUser={loginUser} signUp={signUp} />
           </div>
