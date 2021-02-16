@@ -2,7 +2,7 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 import "./NavBar.css"
 
-function NavBar({loggedIn}) {
+function NavBar({userToken}) {
     const loggedInLinks = (
         <>
             <NavLink exact to="/">Home</NavLink>
@@ -20,7 +20,7 @@ function NavBar({loggedIn}) {
     )
     return (
         <nav>
-            { loggedIn ? loggedInLinks : loggedOutLinks }
+            { userToken !== null ? loggedInLinks : loggedOutLinks }
         </nav>
     );
 }
