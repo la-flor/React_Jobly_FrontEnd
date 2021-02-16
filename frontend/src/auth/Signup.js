@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
+import "./Signup.css"
 
 function Signup({signUp}) {
     const history = useHistory();
@@ -32,7 +33,7 @@ function Signup({signUp}) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="Signup-Form">
             <label htmlFor='username'>
                 Username:
             </label>
@@ -41,7 +42,7 @@ function Signup({signUp}) {
                 type='text'
                 value={formData.username}
                 onChange={handleChange} />
-
+        <br />
             <label htmlFor='password'>
                 Password:
             </label>
@@ -50,6 +51,7 @@ function Signup({signUp}) {
                 type='password'
                 value={formData.password}
                 onChange={handleChange} />
+        <br />
             <label htmlFor='firstName'>
                 First Name:
             </label>
@@ -58,6 +60,7 @@ function Signup({signUp}) {
                 type='text'
                 value={formData.firstName}
                 onChange={handleChange} />
+        <br />
             <label htmlFor='lastName'>
                 Last Name:
             </label>
@@ -66,6 +69,7 @@ function Signup({signUp}) {
                 type='text'
                 value={formData.lastName}
                 onChange={handleChange} />
+        <br />
             <label htmlFor='email'>
                 Email:
             </label>
@@ -74,6 +78,7 @@ function Signup({signUp}) {
                 type='email'
                 value={formData.email}
                 onChange={handleChange} />
+            <br />
             
 
         <button>Signup</button>
