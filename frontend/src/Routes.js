@@ -4,19 +4,18 @@ import {
     Route,
     Redirect
   } from 'react-router-dom';
-import Login from "./Login";
-import Signup from "./Signup";
-import Companies from "./Companies";
-import Jobs from "./Jobs";
-import Profile from "./Profile";
-import Login from "./Login";
+import LoginForm from "./auth/LoginForm";
+import Signup from "./auth/Signup";
+import Companies from "./companies/Companies";
+import Jobs from "./jobs/Jobs";
+import Profile from "./profiles/Profile";
 
 function Routes({loginUser, signUp}) {
   
   return (
     <Switch>
         <Route exact path="/login">
-            <Login loginUser={loginUser}/>
+            <LoginForm loginUser={loginUser}/>
         </Route>
         <Route exact path="/signup">
             <Signup signUp={signUp} />
