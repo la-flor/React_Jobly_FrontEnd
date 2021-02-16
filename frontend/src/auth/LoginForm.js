@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import "./LoginForm.css"
 
 function LoginForm({loginUser}) {
     const history = useHistory();
@@ -22,17 +23,18 @@ function LoginForm({loginUser}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         const loginAttempt = loginUser(formData);
         setFormData(INITIAL_STATE);
         if (loginAttempt.success) {
-            history.pushState("/companies");
+            history.push("/companies");
         } else {
             setFormErrors(loginAttempt.errors);
         }
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="LoginForm">
             <label htmlFor='username'>
                 Username:
             </label>
@@ -41,6 +43,7 @@ function LoginForm({loginUser}) {
                 type='text'
                 value={formData.username}
                 onChange={handleChange} />
+        <br />
 
             <label htmlFor='password'>
                 Password:
@@ -50,6 +53,7 @@ function LoginForm({loginUser}) {
                 type='password'
                 value={formData.password}
                 onChange={handleChange} />
+        <br />
 
         <button>Login</button>
         </form>
