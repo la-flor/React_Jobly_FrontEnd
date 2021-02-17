@@ -33,11 +33,21 @@ function App() {
       return {success: false, errors};
     }
   }
+
+  async function logoutUser() {
+    try {
+      setToken(null);
+      return {success: true};
+    } catch (errors) {
+      console.error("Unable to logout user.", errors);
+      return {success: false, errors};
+    }
+  }
   
   return (
     <>
       <BrowserRouter>
-          <NavBar userToken={userToken} />
+          <NavBar userToken={userToken} logoutUser={logoutUser} />
           <div className="container">
             <Routes loginUser={loginUser} signUp={signUp} />
           </div>
