@@ -1,21 +1,21 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 import "./NavBar.css"
 
-function NavBar({userToken}) {
+function NavBar({userToken, logoutUser}) {
     const loggedInLinks = (
         <>
-            <NavLink exact to="/">Home</NavLink>
-            <NavLink exact to="/companies">Companies</NavLink>
-            <NavLink exact to="/jobs">Jobs</NavLink>
-            <NavLink exact to="/profile">Profile</NavLink>
-            <NavLink exact to="/logout">Logout</NavLink>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/companies">Companies</NavLink>
+            <NavLink to="/jobs">Jobs</NavLink>
+            <NavLink to="/profile">Profile</NavLink>
+            <Link to="/" onClick={logoutUser}>Logout</Link>
         </>
     )
     const loggedOutLinks = (
         <>
-            <NavLink exact to="/login">Login</NavLink>
-            <NavLink exact to="/signup">Signup</NavLink>
+            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/signup">Signup</NavLink>
         </>
     )
     return (
