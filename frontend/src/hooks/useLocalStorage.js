@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 
 const useLocalStorage = (initialValue = null) => {
-    const key = "jobleyKey"
+    const key = "joblyKey"
     const initialLoginStatus = localStorage.getItem(key) || initialValue;
     const [item, setItem] = useState(initialLoginStatus);
 
