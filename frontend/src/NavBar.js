@@ -1,8 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
 import { NavLink, Link } from "react-router-dom"
 import "./NavBar.css"
+import UserContext from "./auth/UserContext";
 
-function NavBar({userToken, logoutUser}) {
+function NavBar({logoutUser}) {
+    const {currentUser} = useContext(UserContext);
+
+    console.debug("Navigation", "currentUser=", currentUser);
     const loggedInLinks = (
         <>
             <NavLink to="/">Home</NavLink>
@@ -20,7 +24,7 @@ function NavBar({userToken, logoutUser}) {
     )
     return (
         <nav>
-            { userToken !== null ? loggedInLinks : loggedOutLinks }
+            { currentUser !== null ? loggedInLinks : loggedOutLinks }
         </nav>
     );
 }
