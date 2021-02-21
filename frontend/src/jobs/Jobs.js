@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import JoblyApi from "../api/api";
 import SearchForm from "../SearchForm";
 import JobCardList from "./JobCardList";
+import "./Jobs.css";
 
 const Jobs = () => {
     const [jobs, setJobs] = useState(null);
@@ -18,12 +19,17 @@ const Jobs = () => {
     if (!jobs) return <h1>Loading...</h1>
 
     return (
-        <div className="Jobs">
-            <SearchForm search={search} />
+        <div className="Jobs mt-5 col-sm-12 col-md-8 offset-sm-0 offset-md-2">
+            <div className="Jobs-card card border-0">
+                <div className="Jobs-search-div p-0 card-body">
+                <SearchForm search={search} />
+
+                </div>
+            </div>
             {jobs.length
-                ? <JobCardList jobs={jobs} />
-                : <p>No results found.</p>
-            }
+                    ? <JobCardList jobs={jobs} />
+                    : <p>No results found.</p>
+                }
         </div>
 
     )

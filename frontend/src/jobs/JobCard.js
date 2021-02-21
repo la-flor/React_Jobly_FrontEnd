@@ -1,14 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../auth/UserContext";
 
+import "./JobCard.css";
+
 function JobCard({ id, title, salary, equity, companyName }) {
 
   const { hasAppliedToJob, applyToJob } = useContext(UserContext);
   const [applied, setApplied] = useState();
 
   useEffect(function updateAppliedStatus() {
-    console.debug("JobCard useEffect updateAppliedStatus", "id=", id);
-
     setApplied(hasAppliedToJob(id));
   }, [id, hasAppliedToJob]);
 
@@ -19,20 +19,21 @@ function JobCard({ id, title, salary, equity, companyName }) {
   }
 
   return (
-      <div className="JobCard card"> {applied}
-        <div className="card-body">
+      <div className="JobCard card my-4 p-4"> {applied}
           <h6 className="card-title">{title}</h6>
+          <div className="JobCard-btn-div">
+            <button
+                className="JobCard-btn btn font-weight-bold text-uppercase"
+                onClick={handleApply}
+                disabled={applied}
+            >
+              {applied ? "Applied" : "Apply"}
+            </button>
+          </div>
           <p>{companyName}</p>
           {salary && <div><small>Salary: {formatSalary(salary)}</small></div>}
-          {equity !== undefined && <div><small>Equity: {equity}</small></div>}
-          <button
-              className="btn btn-danger font-weight-bold text-uppercase float-right"
-              onClick={handleApply}
-              disabled={applied}
-          >
-            {applied ? "Applied" : "Apply"}
-          </button>
-        </div>
+          {equity && <div><small>Equity: {equity}</small></div>}
+
       </div>
   );
 }
