@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-// import Alert from "../common/Alert";
 import JoblyApi from "../api/api";
 import UserContext from "../auth/UserContext";
+import Alert from "../helpers/Alert";
 
 function Profile() {
   const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -16,26 +16,10 @@ function Profile() {
 
   const [saveConfirmed, setSaveConfirmed] = useState(false);
 
-  console.debug(
-      "ProfileForm",
-      "currentUser=", currentUser,
-      "formData=", formData,
-      "formErrors=", formErrors,
-      "saveConfirmed=", saveConfirmed,
-  );
-
-  /** on form submit:
-   * - attempt save to backend & report any errors
-   * - if successful
-   *   - clear previous error messages and password
-   *   - show save-confirmed message
-   *   - set current user info throughout the site
-   */
-
   async function handleSubmit(evt) {
     evt.preventDefault();
 
-    let profileData = {
+    let userInfo = {
       firstName: formData.firstName,
       lastName: formData.lastName,
       email: formData.email,
@@ -46,22 +30,19 @@ function Profile() {
     let updatedUser;
 
     try {
-      updatedUser = await JoblyApi.saveProfile(username, profileData);
+      updatedUser = await JoblyApi.updateProfile(username, userInfo);
     } catch (errors) {
-      debugger;
       setFormErrors(errors);
       return;
     }
 
-    setFormData(f => ({ ...f, password: "" }));
+    setFormData(data => ({...data, password: ""}));
     setFormErrors([]);
     setSaveConfirmed(true);
 
-    // trigger reloading of user information throughout the site
     setCurrentUser(updatedUser);
   }
 
-  /** Handle form data changing */
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(f => ({
@@ -72,17 +53,17 @@ function Profile() {
   }
 
   return (
-      <div className="col-md-6 col-lg-4 offset-md-3 offset-lg-4">
-        <h3>Profile</h3>
+      <div className="Profile mt-5 col-md-6 col-lg-4 offset-md-3 offset-lg-4">
+        <h1>User Profile</h1>
         <div className="card">
           <div className="card-body">
             <form>
               <div className="form-group">
-                <label>Username</label>
+                <h5><label>Username</label></h5>
                 <p className="form-control-plaintext">{formData.username}</p>
               </div>
               <div className="form-group">
-                <label>First Name</label>
+                <h5><label>First Name</label></h5>
                 <input
                     name="firstName"
                     className="form-control"
@@ -91,7 +72,7 @@ function Profile() {
                 />
               </div>
               <div className="form-group">
-                <label>Last Name</label>
+                <h5><label>Last Name</label></h5>
                 <input
                     name="lastName"
                     className="form-control"
@@ -100,7 +81,7 @@ function Profile() {
                 />
               </div>
               <div className="form-group">
-                <label>Email</label>
+                <h5><label>Email</label></h5>
                 <input
                     name="email"
                     className="form-control"
@@ -109,7 +90,7 @@ function Profile() {
                 />
               </div>
               <div className="form-group">
-                <label>Confirm password to make changes:</label>
+                <h5><label>Confirm password to make changes:</label></h5>
                 <input
                     type="password"
                     name="password"
@@ -119,17 +100,17 @@ function Profile() {
                 />
               </div>
 
-              {/* {formErrors.length
+              {formErrors.length
                   ? <Alert type="danger" messages={formErrors} />
                   : null}
 
               {saveConfirmed
                   ?
                   <Alert type="success" messages={["Updated successfully."]} />
-                  : null} */}
+                  : null}
 
               <button
-                  className="btn btn-primary btn-block mt-4"
+                  className="btn btn-info btn-block mt-4"
                   onClick={handleSubmit}
               >
                 Save Changes
