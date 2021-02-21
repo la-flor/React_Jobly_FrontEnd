@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./LoginForm.css"
+import Alert from "../helpers/Alert";
 
 function LoginForm({loginUser}) {
-    const history = useHistory();
+    let history = useHistory();
 
     const INITIAL_STATE = {
         username: '',
@@ -34,29 +35,42 @@ function LoginForm({loginUser}) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="LoginForm">
-            <label htmlFor='username'>
-                Username:
-            </label>
-            <input
-                name='username'
-                type='text'
-                value={formData.username}
-                onChange={handleChange} />
-        <br />
 
-            <label htmlFor='password'>
-                Password:
-            </label>
-            <input
-                name='password'
-                type='password'
-                value={formData.password}
-                onChange={handleChange} />
-        <br />
+        <div className="LoginForm-container container p-4">
+            <h1 className="LoginForm-title">Login</h1>
+            <form onSubmit={handleSubmit} className="LoginForm">
+                <div className="form-group">
+                    <label htmlFor='username'>
+                        Username:
+                    </label>
 
-        <button>Login</button>
-        </form>
+                    <input
+                        name='username'
+                        type='text'
+                        value={formData.username}
+                        onChange={handleChange}
+                        className="form-control" />
+            
+                </div>
+                <div className="form-group">
+                    <label htmlFor='password'>
+                        Password:
+                    </label>
+                    <input
+                        name='password'
+                        type='password'
+                        value={formData.password}
+                        onChange={handleChange}
+                        className="form-control" />    
+                </div>
+
+                {/* {formErrors.length > 0
+                    ? <Alert type="danger" messages={formErrors} />
+                    : null} */}
+
+                <button className="btn btn-info">Login</button>
+            </form>
+        </div>
 
     )
 }

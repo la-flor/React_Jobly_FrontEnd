@@ -10,6 +10,7 @@ import CompaniesList from "./companies/CompanyList";
 import CompanyJobOpenings from "./companies/CompanyJobOpenings";
 import Jobs from "./jobs/Jobs";
 import Profile from "./profiles/Profile";
+import HomePage from "./homepage/HomePage";
 
 function Routes({loginUser, signUp}) {
   
@@ -32,6 +33,9 @@ function Routes({loginUser, signUp}) {
         </Route>
         <Route exact path="/companies/:handle">
             <CompanyJobOpenings />
+        </Route>
+        <Route exact path="/">
+            <HomePage />
         </Route>
         <Redirect to="/login" />
     </Switch>
