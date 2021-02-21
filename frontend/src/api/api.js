@@ -52,15 +52,12 @@ class JoblyApi {
 
   static async getCompanyDetails(handle) {
     let res = await this.request(`companies`, {handle});
-    debugger;
     return res
   }
 
   /* Get token for login from username, password. */
 
   static async login(data) {
-
-    debugger;
     let res = await this.request(`auth/token`, data, "post");
 
     return res.token;
@@ -81,6 +78,15 @@ class JoblyApi {
   static async getJobs(title) {
     let res = await this.request("jobs", { title });
     return res.jobs;
+  }
+
+  static async applyToJob(username, id) {
+    await this.request(`users/${username}/jobs/${id}`, {}, "post");
+  }
+
+  static async updateProfile(username, data) {
+    let res = await this.request(`users/${username}`, data, "patch");
+    return res.user;
   }
 
 }
