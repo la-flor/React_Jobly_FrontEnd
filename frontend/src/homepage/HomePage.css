@@ -1,0 +1,12 @@
+.HomePage {
+    text-align: center;
+}
+
+.HomePage-title {
+    color: rgba(5,77,97,1);
+    font-size: 4rem;
+}
+
+.HomePage-slogan {
+    font-size: 2rem;
+}
