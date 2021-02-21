@@ -1,0 +1,7 @@
+.SearchForm-btn {
+    background-color: rgba(9,152,181,1)
+}
+
+.SearchForm-btn:hover, .SearchForm-btn:visited, .SearchForm-btn:active {
+    background-color: rgba(5,77,97,1);
+}

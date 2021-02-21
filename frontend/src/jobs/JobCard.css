@@ -1,0 +1,31 @@
+.JobCard {
+    background-color: white;
+    color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    box-shadow: 1.5px 1.5px lightgray, -1.5px 1.5px lightgray;
+}
+
+a, a:hover, a:visited, a:active {
+    text-decoration: none;
+}
+
+.JobCard-handle {
+    font-weight: bold;
+}
+
+.JobCard-btn-div {
+    display: inline-block;
+    position: relative;
+    margin-left: auto;
+}
+
+.JobCard-btn {
+    background-color: rgba(9,152,181,1)
+}
+
+.JobCard-btn:hover, .JobCard-btn:visited, .JobCard-btn:active {
+    background-color: rgba(5,77,97,1);
+    color: #F8F8F8;
+}

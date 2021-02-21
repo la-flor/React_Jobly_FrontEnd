@@ -1,6 +1,19 @@
+.CompanyCard:hover {
+    box-shadow: 3px 3px 10px lightgray, -3px 3px 10px lightgray;
+    color: rgba(5,77,97,1);
+}
+
 .CompanyCard {
-    border: 1px solid black;
-    border-radius: 5px;
+    background-color: white;
+    color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    box-shadow: 1.5px 1.5px lightgray, -1.5px 1.5px lightgray;
+}
+
+a, a:hover, a:visited, a:active {
+    text-decoration: none;
 }
 
 .CompanyCard-handle {
