@@ -8,7 +8,10 @@ function Signup({signUp}) {
 
     const INITIAL_STATE = {
         username: '',
-        password: ''
+        password: '',
+        firstName: '',
+        lastName: '',
+        email: ''
     }
 
     const [formData, setFormData] = useState(INITIAL_STATE);
@@ -25,7 +28,6 @@ function Signup({signUp}) {
     const handleSubmit = async(e) => {
         e.preventDefault();
         const signUpAttempt = await signUp(formData);
-        setFormData(INITIAL_STATE);
         if (signUpAttempt.success) {
             history.push("/companies");
         } else {

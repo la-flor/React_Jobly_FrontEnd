@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
-import UserContext from "../auth/UserContext";
+import UserContext from "./auth/UserContext";
 
 /* Specifies if further routing to destination is allowed
     by checking if use is logged in */
