@@ -22,12 +22,12 @@ function Signup({signUp}) {
         }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        const signUpAttempt = signUp(formData);
+        const signUpAttempt = await signUp(formData);
         setFormData(INITIAL_STATE);
         if (signUpAttempt.success) {
-            history.pushState("/companies");
+            history.push("/companies");
         } else {
             setFormErrors(signUpAttempt.errors);
         }

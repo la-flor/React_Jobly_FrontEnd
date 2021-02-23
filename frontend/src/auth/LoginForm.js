@@ -22,10 +22,10 @@ function LoginForm({loginUser}) {
         }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
 
-        const loginAttempt = loginUser(formData);
+        const loginAttempt = await loginUser(formData);
         setFormData(INITIAL_STATE);
         if (loginAttempt.success) {
             history.push("/companies");
