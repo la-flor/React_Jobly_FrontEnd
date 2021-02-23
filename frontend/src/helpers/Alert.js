@@ -1,5 +1,7 @@
 import React from "react";
 
+/* Alert helper provided for invalid form submission 
+    in Login, Signup, and Profile */
 function Alert({ type = "danger", messages = [] }) {
 
   return (

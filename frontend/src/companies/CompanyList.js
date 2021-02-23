@@ -16,7 +16,6 @@ function CompanyList() {
         setCompanies(companies);
     }
 
-
     return (
         <div className="CompanyList mt-5 col-sm-12 col-md-8 offset-sm-0 offset-md-2">
             <div className="CompanyList-card card border-0">

@@ -88,7 +88,6 @@ class JoblyApi {
     let res = await this.request(`users/${username}`, data, "patch");
     return res.user;
   }
-
 }
 
 export default JoblyApi;

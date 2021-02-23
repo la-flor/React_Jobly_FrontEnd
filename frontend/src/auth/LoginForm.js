@@ -64,14 +64,13 @@ function LoginForm({loginUser}) {
                         className="form-control" />    
                 </div>
 
-                {/* {formErrors.length > 0
+                {formErrors.length > 0
                     ? <Alert type="danger" messages={formErrors} />
-                    : null} */}
+                    : null}
 
                 <button className="btn btn-info">Login</button>
             </form>
         </div>
-
     )
 }
 

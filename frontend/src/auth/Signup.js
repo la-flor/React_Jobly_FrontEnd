@@ -99,10 +99,8 @@ function Signup({signUp}) {
                 }
 
                 <button className="btn btn-info">Signup</button>
-
         </form>
         </div>
-
     )
 }
 

@@ -3,6 +3,18 @@ import UserContext from "../auth/UserContext";
 
 import "./JobCard.css";
 
+function formatSalary(salary) {
+  const digitsRev = [];
+  const salaryStr = salary.toString();
+
+  for (let i = salaryStr.length - 1; i >= 0; i--) {
+    digitsRev.push(salaryStr[i]);
+    if (i > 0 && i % 3 === 0) digitsRev.push(",");
+  }
+
+  return digitsRev.reverse().join("");
+}
+
 function JobCard({ id, title, salary, equity, companyName }) {
 
   const { hasAppliedToJob, applyToJob } = useContext(UserContext);
@@ -37,18 +49,5 @@ function JobCard({ id, title, salary, equity, companyName }) {
       </div>
   );
 }
-
-function formatSalary(salary) {
-  const digitsRev = [];
-  const salaryStr = salary.toString();
-
-  for (let i = salaryStr.length - 1; i >= 0; i--) {
-    digitsRev.push(salaryStr[i]);
-    if (i > 0 && i % 3 === 0) digitsRev.push(",");
-  }
-
-  return digitsRev.reverse().join("");
-}
-
 
 export default JobCard;
