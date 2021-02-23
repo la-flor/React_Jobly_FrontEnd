@@ -11,6 +11,7 @@ import CompanyJobOpenings from "./companies/CompanyJobOpenings";
 import Jobs from "./jobs/Jobs";
 import Profile from "./profiles/Profile";
 import HomePage from "./homepage/HomePage";
+import PrivateRoute from "./PrivateRoute";
 
 function Routes({loginUser, signUp}) {
   
@@ -22,21 +23,21 @@ function Routes({loginUser, signUp}) {
         <Route exact path="/signup">
             <Signup signUp={signUp} />
         </Route>
-        <Route exact path="/companies">
+        <PrivateRoute exact path="/companies">
             <CompaniesList />
-        </Route>
-        <Route exact path="/jobs">
+        </PrivateRoute>
+        <PrivateRoute exact path="/jobs">
             <Jobs />
-        </Route>
-        <Route exact path="/profile">
+        </PrivateRoute>
+        <PrivateRoute exact path="/profile">
             <Profile />
-        </Route>
-        <Route exact path="/companies/:handle">
+        </PrivateRoute>
+        <PrivateRoute exact path="/companies/:handle">
             <CompanyJobOpenings />
-        </Route>
-        <Route exact path="/">
+        </PrivateRoute>
+        <PrivateRoute exact path="/">
             <HomePage />
-        </Route>
+        </PrivateRoute>
         <Redirect to="/login" />
     </Switch>
   );
